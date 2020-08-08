@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,14 +19,14 @@ public class CarController : MonoBehaviour
     private int store;
     private float maxYTranslateCamera;
     private float actualYTranslateCamera;
-
+    
 
     private Vector3 VectorForCar;
     private GameObject RWall;
     private GameObject LWall;
     private GameObject BackWall;
     private Text ScoreText;
-    public Image WarningImage;
+        
 
     private static readonly float BONUS_MULTIPLIER_STORE = 2.5f;
 
@@ -39,7 +38,6 @@ public class CarController : MonoBehaviour
         RWall = GameObject.Find("RWall");
         LWall = GameObject.Find("LWall");
         BackWall = GameObject.Find("BackWall");
-        WarningImage = GameObject.Find("WarningImage").GetComponent<Image>();
         ScoreText = GameObject.Find("ScoreText").GetComponent<Text>();
         VectorForCar = new Vector3(0, 0, 0);
         maxSpeed = maxSpeed != 0 ? maxSpeed : 10;
@@ -56,19 +54,6 @@ public class CarController : MonoBehaviour
         FetchMap();
         MoveCar();
         CountStore();
-        //SetWarningImage(false);
-    }
-    // Now this function works, but have't needed yet.
-    private void SetWarningImage(bool visible)
-    {
-        if (visible)
-        {
-            WarningImage.enabled = true;
-        }
-        else
-        {
-            WarningImage.enabled = false;
-        }
     }
 
     private void CountStore()
